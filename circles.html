@@ -6,20 +6,22 @@
         <link rel="stylesheet" type="text/css" href="circles.css">
         
         <script type="text/paperscript" canvas="myCanvas">
+            
+            var circles = [];
+
             function onKeyDown(event){
                 var maxPoint = new Point(view.size.width, view.size.height);
-                //Does this: new Point(Math.random(), Math.random());
-                var randomPoint = Point.random();
+                var randomPoint = Point.random(); //Does this: new Point(Math.random(), Math.random());
                 var point = maxPoint * randomPoint;
-                new Path.Circle(point, 15).fillColor = 'green';
+                
+                var newCircle = new Path.Circle(point, 500);
+                newCircle.fillColor = 'red';
+                circles.push(newCircle);
             }
-
-            var animateCircle = new Path.Circle(new Point(300,300), 100);
-            animateCircle.fillColor = "red";
             
             function onFrame(event){
-                for(var e = 0; e < circles.length; e++;){
-                    circles[e].fillColor.hue += 1; //changes te hue of the animated circle
+                for(var e = 0; e < circles.length;e++){
+                    circles[e].fillColor.hue += 1; //changes te hue of each circle
                     circles[e].scale(.9);
                 }
             }
