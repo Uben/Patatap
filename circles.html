@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Simple Patatap Clone</title>
+        <script type="text/javascript" src="paper-full.js"></script>
+        <link rel="stylesheet" type="text/css" href="circles.css">
+        
+        <script type="text/paperscript" canvas="myCanvas">
+            function onKeyDown(event){
+                var maxPoint = new Point(view.size.width, view.size.height);
+                //Does this: new Point(Math.random(), Math.random());
+                var randomPoint = Point.random();
+                var point = maxPoint * randomPoint;
+                new Path.Circle(point, 15).fillColor = 'green';
+            }
+
+            var animateCircle = new Path.Circle(new Point(300,300), 100);
+            animateCircle.fillColor = "red";
+            
+            function onFrame(event){
+                for(var e = 0; e < circles.length; e++;){
+                    circles[e].fillColor.hue += 1; //changes te hue of the animated circle
+                    circles[e].scale(.9);
+                }
+            }
+
+            /*
+            function onKeyUp(event){
+                var myCircle = new Path.Circle(new Point(100, 100), 50).fillColor = 'orange';
+            }
+
+            TESTING PAPER.JS
+            var path = new Path();
+            path.strokeColor = 'white';
+            var start = new Point(0,100);
+            path.moveTo(start);
+            path.lineTo(start + [100, -50]);
+
+            for(var x = 15; x < 2015;x+=25){
+                for(var i = 15; i < 2015; i+=25){
+                   var myCircle = new Path.Circle(new Point(i, x), 12).fillColor = 'green'; 
+                }
+            }
+
+            for(var x = 15; x < 2015;x+=25){
+                for(var i = 15; i < 2015; i+=25){
+                   var myCircle = new Path.Circle(new Point(i, x), 6).fillColor = 'white'; 
+                }
+            }*/
+        </script>
+    </head>
+    <body>
+        <canvas id="myCanvas" resize></canvas>
+    </body>
+</html>
