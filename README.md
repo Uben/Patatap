@@ -1,1 +1,4 @@
-Patatap.com clone made with Paper.js
+#Patatap Clone
+### Made with:
+- Paper.js
+- Howler.js
